@@ -22,7 +22,15 @@ class Client:
         elif filme in self.listBasic:
             print(f"Assistindo {filme} - Plano: {self.plan}")
         else:
-            input(f"Filme não disponível para o plano {self.plan}. Deseja fazer um upgrade?")
+            upgrade_option = input(f"Filme não disponível para o plano {self.plan}. Deseja fazer um upgrade?")
+            if upgrade_option.lower == "Sim":
+                new_plan = input ("Premium/Intermediário/Basica")
+                self.mudar_plan(new_plan)
+                print(f"Upgrade realizado! Agora você está no plano {self.plan}.")
+                print(f"Agora você pode assistir {filme}.")
+            else:
+                print("Upgrade não realizado. Filme indisponível.")
+            
 
 cliente = Client("alexandre", "Basic")
 cliente.filmes('avengers')
