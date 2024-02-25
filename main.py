@@ -1,7 +1,7 @@
 class Client:
     def __init__(self, name, plan):
         self.name = name
-        self.list_plan = ["Premium", "Basic"]
+        self.list_plan = ["Premium", "Basic", "Free"]
         if plan in self.list_plan:
             self.plan = plan
         else:
@@ -16,10 +16,13 @@ class Client:
     def filmes(self, filme):
         self.listPremium = ['bee-moovie', 'avengers', 'tinker bell']
         self.listBasic = ['batman', 'sem floresta']
+        self.listFree = ['Robin Hood', 'senhor dos anéis']
 
         if self.plan == "Premium" and filme in self.listPremium:
             print(f"Assistindo {filme} - Plano: {self.plan}")
         elif filme in self.listBasic:
+            print(f"Assistindo {filme} - Plano: {self.plan}")
+        elif filme in self.listFree:
             print(f"Assistindo {filme} - Plano: {self.plan}")
         else:
             upgrade_option = input(f"Filme não disponível para o plano {self.plan}. Deseja fazer um upgrade? (Sim/Não): ")
@@ -31,5 +34,5 @@ class Client:
             else:
                 print("Upgrade não realizado. Filme indisponível.")
 
-cliente = Client("alexandre", "Basic")
-cliente.filmes('avengers')
+cliente = Client("alexandre", "Premium")
+cliente.filmes('Robin Hood')
