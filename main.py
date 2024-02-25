@@ -17,11 +17,12 @@ class Client:
         self.listPremium = ['bee-moovie', 'avengers', 'tinker bell']
         self.listBasic = ['batman', 'sem floresta']
 
-        if filme in self.listBasic or filme in self.listPremium:
+        if self.plan == "Premium" and filme in self.listPremium:
+            print(f"Assistindo {filme} - Plano: {self.plan}")
+        elif filme in self.listBasic:
             print(f"Assistindo {filme} - Plano: {self.plan}")
         else:
-            print(f"Filme não disponível para o plano {self.plan}")
+            input(f"Filme não disponível para o plano {self.plan}. Deseja fazer um upgrade?")
 
-cliente = Client("alexandre", "Premium")
-cliente.filmes('batman')
-
+cliente = Client("alexandre", "Basic")
+cliente.filmes('avengers')
