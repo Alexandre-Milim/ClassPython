@@ -1,42 +1,23 @@
-class Client:
-    def __init__(self, name, plan):
-        self.name = name
-        self.list_plan= ["Premium", "Basic", "Free"]
-        if plan in self.list_plan:
-            self.plan = plan
+class Usuario:
+    def __init__(self, plano):
+        self.Lista_Plano = ['Premium', 'Basic', 'Free']
+        if plano in self.Lista_Plano:
+            self.plano = plano
         else:
-            raise Exception("Plano Inválido!")
+            raise Exception ("Plano Inválido!")
 
-    def mudar_plan(self, new_plan):
-        if new_plan in self.list_plan:
-            self.plan = new_plan
+    def Ver_Animes(self, Anime):
+        self.ListaPremium = ['Naruto', 'Dragon Ball', 'One Piece']
+        self.ListaBasic = ['Jujutsu Kaisen', 'Death Note', 'Hunter X Hunter']
+        self.ListaFree = ['Solo Leving', 'Shingeki no Kyojin']
+        if self.plano == "Premium":
+            print(f"Assistindo o anime: {Anime} com o plano {self.plano}")
+        elif self.plano == "Basic" and (Anime in self.ListaBasic or Anime in self.ListaFree):
+            print(f"Assistindo o anime: {Anime} com o plano {self.plano}")
+        elif self.plano == "Free" and Anime in self.ListaFree:
+            print(f"Assistindo o anime: {Anime} com o plano {self.plano}")
         else:
-            raise Exception("Plano Inválido!")
+            raise Exception ("Filme inválido para o atual plano usuario, deseja fazer um upgrade?")
 
-    def filmes(self, filme):
-        self.listPremium = ['bee-moovie', 'avengers', 'tinker bell']
-        self.listBasic = ['batman', 'sem floresta']
-        self.listFree = ['Robin Hood', 'senhor dos anéis']
-
-        if self.plan == "Premium" and filme in self.listPremium:
-            print(f"Assistindo {filme} - Plano: {self.plan}")
-        elif filme in self.listBasic:
-            print(f"Assistindo {filme} - Plano: {self.plan}")
-        elif filme in self.listFree:
-            print(f"Assistindo {filme} - Plano: {self.plan}")
-        else:
-            upgrade_option = input(f"{self.name}, filme não disponível para o plano {self.plan}. Deseja fazer um upgrade? (Sim/Não): ")
-            if upgrade_option.lower() == "sim":
-                new_plan = input("Escolha o novo plano (Premium/Basic/Free): ")
-                self.mudar_plan(new_plan)
-                print(f"Upgrade realizado! Agora você está no plano {self.plan}.")
-                print(f"Agora você pode assistir {filme}.")
-            else:
-                print("Upgrade não realizado. Filme indisponível.")
-
-nome_usuario = input("Digite seu nome: ")
-plano_usuario = input("Escolha o plano (Premium/Basic/Free): ").lower()
-filme_assistir = input("Digite o filme que deseja assistir: ")
-
-cliente = Client(nome_usuario, plano_usuario)
-cliente.filmes(filme_assistir)
+cliente = Usuario("Basic")
+cliente.Ver_Animes("Naruto")
