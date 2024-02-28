@@ -1,4 +1,6 @@
 class Usuario:
+    #mostar lista de filmes disponiveis conforme o planp do usuario
+    #aplicar o crud
     def __init__(self, plano):
         self.planos_disponiveis = ["Premium", "Basic", "Free"]
         if plano in self.planos_disponiveis:
@@ -29,6 +31,6 @@ class Usuario:
                 print(f"Assistindo o filme: {filme} com o novo plano {self.plano}")
             else:
                 raise Exception("Filme indisponível para sua categoria")
-
-cliente = Usuario("Basic")
-cliente.Ver_Filmes("A Rede Social")
+    
+cliente = Usuario( plano = input(' digite o plano do usuario: '))
+print(f'para vc que possui o plano {cliente.plano} esse são os filmes disponeis: {cliente.Ver_Filmes}')
