@@ -1,6 +1,4 @@
 class Usuario:
-    #mostar lista de filmes disponiveis conforme o planp do usuario
-    #aplicar o crud
     def __init__(self, plano):
         self.planos_disponiveis = ["Premium", "Basic", "Free"]
         if plano in self.planos_disponiveis:
@@ -17,7 +15,7 @@ class Usuario:
         lista_basic = ["La La Land: Cantando Estações", "Avatar: O Caminho da Água", "O Quarto de Jack"]
         lista_free = ["Gravidade", "A Baleia"]
 
-        if self.plano == "Premium" and filme in lista_premium:
+        if self.plano == "Premium" and (filme in lista_premium or filme in lista_basic or filme in lista_free):
             print(f"Assistindo o filme: {filme} com o plano {self.plano}")
         elif self.plano == "Basic" and (filme in lista_basic or filme in lista_free):
             print(f"Assistindo o filme: {filme} com o plano {self.plano}")
@@ -31,6 +29,8 @@ class Usuario:
                 print(f"Assistindo o filme: {filme} com o novo plano {self.plano}")
             else:
                 raise Exception("Filme indisponível para sua categoria")
-    
-cliente = Usuario( plano = input(' digite o plano do usuario: '))
-print(f'para vc que possui o plano {cliente.plano} esse são os filmes disponeis: {cliente.Ver_Filmes}')
+
+plano_usuario = input('Digite o plano do usuário: ')
+cliente = Usuario(plano=plano_usuario)
+ver_filmes_desejado = input('Digite o nome do filme que você deseja assistir: ')
+cliente.Ver_Filmes(ver_filmes_desejado)
